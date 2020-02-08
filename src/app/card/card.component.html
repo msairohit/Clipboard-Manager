@@ -1,0 +1,18 @@
+<div>
+    <ul style="list-style-type: none;">
+        <li *ngFor="let data of parentData; index as i" (click)="clicked(data)"
+            style="display: inline-block; margin-right: 20px;">
+            <!-- <div class="card-columns"> -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">{{data}}</h4>
+                </div>
+                <button type="button" class="btn btn-danger" value="remove" (click)="removeItem(data)">
+                    <!-- <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> -->
+                    remove
+                </button>
+                <!-- </div> -->
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,46 @@
+<div id="body">
+    <p class="lead"><!-- 
+        <a class="btn btn-primary btn-lg" (click)="paste()" role="button" style="align-items: center;">Paste from
+            clipboard</a> -->
+            <input type="button" style="width: 100%;height: 250px;" class="btn btn-success" (click) = "paste()" value="Paste from clipboard">
+    </p>
+    <input type="text" #manualText name="input text" id="inputText" placeholder="enter manual text">
+    <button (click)="manualAdd(manualText.value)" class="btn btn-primary">Add to list</button>
+    <button type="button" class="btn btn-warning" (click)="clearList()">Clear list</button>
+    <app-card [parentData]="allData" (removeElement)="removeSingleData($event)"></app-card>
+</div>
+
+<div id="header">
+    <div class="jumbotron" style="align-items: center;">
+        <h1 class="display-3">Clipboard manager</h1>
+        <p class="lead">Save all the useful text here to access anytime</p>
+        <hr class="my-2">
+        <p>More info</p>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" [hidden] = "true" id="openModalButton">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Changes detected in clipboard</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Do you want to add the copied  <strong> {{currentText}} </strong>  data to list
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click) = "ignoreTheCopiedChange()">No, ignore this copied item</button>
+          <button type="button" class="btn btn-primary" (click) = "paste()" data-dismiss="modal">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
